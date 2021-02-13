@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::resource('categoria', 'CategoriaController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PlataformaController@viewHome');
