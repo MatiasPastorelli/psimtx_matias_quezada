@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,19 +50,6 @@ class CategoriaController extends Controller
         $this->validate($request,['nombre'=>'required','descripcion'=>'required']);
         Categoria::create($request->all());
         return redirect()->route('categoria.index')->with('success','Registro creado satisfactoriamente');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        $categoria=Categoria::find($id);
-        return  view('categoria.show',compact('categoria'));
     }
 
     /**
